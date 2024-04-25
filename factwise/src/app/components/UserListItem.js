@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const UserListItem = ({ user, onAccordionToggle}) => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleAccordion = () => {
     setIsExpanded(prevState => !prevState);
@@ -12,10 +12,10 @@ const UserListItem = ({ user, onAccordionToggle}) => {
 
   return (
     <div
-    className={`user-list-item border border-slate-300 rounded-xl px-5 py-5 mt-2 max-w-xl min-w-xl ${
+    className={`user-list-item border border-slate-300 rounded-xl px-5 py-5 mt-2 max-w-xl  ${
       isExpanded ? "expanded" : ""
     }`}
-    style={{ transition: "max-height 0.3s ease-in-out" }}
+    style={{ transition: "max-height 0.3s ease-in-out" , width: "36rem"}}
     >
       {/* <div className="accordion-header flex flex-row items-center">
         <img
