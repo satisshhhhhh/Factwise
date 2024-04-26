@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const UserListItem = ({ user, onAccordionToggle}) => {
+const UserListItem = ({ user, onAccordionToggle, onEditUser }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleAccordion = () => {
@@ -12,10 +12,10 @@ const UserListItem = ({ user, onAccordionToggle}) => {
 
   return (
     <div
-    className={`user-list-item border border-slate-300 rounded-xl px-5 py-5 mt-2 max-w-xl  ${
-      isExpanded ? "expanded" : ""
+    className={`user-list-item border border-slate-300 rounded-xl px-5 py-5 max-w-xl transition ease-in-out delay-300 hover:-translate-y hover:scale-105 hover: duration-700 ease-in-out ${
+      isExpanded ? "expanded my-4" : "my-2"
     }`}
-    style={{ transition: "max-height 0.3s ease-in-out" , width: "36rem"}}
+    style={{ transition: "height 1s ease-in-out" , width: "36rem"}}
     >
       {/* <div className="accordion-header flex flex-row items-center">
         <img
@@ -28,7 +28,7 @@ const UserListItem = ({ user, onAccordionToggle}) => {
         <h3 className="pl-3">{`${user.first} ${user.last}`}</h3>
         <span>{isExpanded ? "-" : "+"}</span>
       </div> */}
-      <div className="accordion-header flex items-center justify-between" onClick={toggleAccordion} style={{ transition: "height 0.3s ease-in-out" }}> 
+      <div className="accordion-header flex items-center justify-between" style={{ transition: "height 1s ease-in-out" }}> 
         <div className="flex items-center">
           <img
             className="rounded-full border border-slate-300"
@@ -39,7 +39,7 @@ const UserListItem = ({ user, onAccordionToggle}) => {
           />
           <h3 className="pl-3 text-xl">{`${user.first} ${user.last}`}</h3>
         </div>
-        <span>
+        <span className="cursor-pointer transition duration-300 ease-in-out" onClick={toggleAccordion} >
           {isExpanded ? (
             <svg
               class="w-6 h-6 text-gray-800 dark:text-slate-300"
