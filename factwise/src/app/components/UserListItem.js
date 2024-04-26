@@ -1,21 +1,27 @@
 "use client";
 
 import { useState } from "react";
+import DeleteDialog from "./DeleteDialog";
 
-const UserListItem = ({ user, onAccordionToggle, onEditUser }) => {
+const UserListItem = ({ user, onAccordionToggle, onDeleteUser, onEditUser }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const toggleAccordion = () => {
     setIsExpanded(prevState => !prevState);
     onAccordionToggle(user.id);
   };
 
+  const handleDelete = () => {
+    onDeleteUser(user.id);
+    setShowDeleteDialog(false);
+  };
+
   return (
     <div
-    className={`user-list-item border border-slate-300 rounded-xl px-5 py-5 max-w-xl transition ease-in-out delay-300 hover:-translate-y hover:scale-105 hover: duration-700 ease-in-out ${
-      isExpanded ? "expanded my-4" : "my-2"
+    className={`user-list-item border border-slate-300 rounded-xl px-5 py-5 max-w-xl ${
+      isExpanded ? "expanded my-2 transition ease-in-out delay-100" : "my-2"
     }`}
-    style={{ transition: "height 1s ease-in-out" , width: "36rem"}}
     >
       {/* <div className="accordion-header flex flex-row items-center">
         <img
@@ -107,7 +113,8 @@ const UserListItem = ({ user, onAccordionToggle, onEditUser }) => {
             <span className="capitalize ">{user.description}</span>
           </div>
           <div className="flex justify-end mb-2">
-            <button onClick={() => onDeleteUser(user)}>
+            {/* <button onClick={() => onDeleteUser(user.id)}> */}
+            <button onClick={() => setShowDeleteDialog(true)}>
               <svg
                 class="w-6 h-6 text-gray-800 dark:text-red-500"
                 aria-hidden="true"
@@ -149,6 +156,9 @@ const UserListItem = ({ user, onAccordionToggle, onEditUser }) => {
             </button>
           </div>
         </div>
+      )}
+      {showDeleteDialog && (
+        <DeleteDialog onCancel={() => setShowDeleteDialog(false)} onDelete={handleDelete} />
       )}
     </div>
   );

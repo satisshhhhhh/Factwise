@@ -2,4 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.search-bar {
+  width: 36rem;
+}
 
+.user-list-item {
+  width: 36rem;
+  height: auto;
+  transition: "height 1s ease-in-out";
+}
+
+.expanded {
+  transition: "height 1s ease-in-out";
+}

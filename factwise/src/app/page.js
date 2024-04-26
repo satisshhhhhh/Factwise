@@ -29,6 +29,29 @@ export default function Home() {
     setSearchTerm(term);
   };
 
+  const handleEditUser = (user) => {
+    setEditedUserId(user.id);
+  };
+
+  const handleSaveUser = (editedUser) => {
+    setUsers((prevUsers) =>
+      prevUsers.map((user) =>
+        user.id === editedUser.id ? { ...user, ...editedUser } : user
+      )
+    );
+    setEditedUserId(null);
+  };
+
+  const handleDeleteUser = (id) => {
+    // if (window.confirm("Are you sure you want to delete this user?")) {
+    setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
+    // }
+  };
+
+  const handleCancelEdit = () => {
+    setEditedUserId(null);
+  };
+
   return (
     // <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-gray-200 dark:bg-gray-800">
     // <main className="flex h-screen ">
@@ -38,8 +61,8 @@ export default function Home() {
         <UserList
           users={filteredUsers}
           onAccordionToggle={handleAccordionToggle}
-          // onDeleteUser={handleDeleteUser}
-          // onEditUser={handleEditUser}
+          onDeleteUser={handleDeleteUser}
+          onEditUser={handleEditUser}
         />
 
         {/* {userData.map( (user) => (
