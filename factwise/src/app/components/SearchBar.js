@@ -9,7 +9,7 @@ const SearchBar = ({ handleSearch }) => {
   return (
     <div className="search-bar flex mt-5 border border-slate-400 rounded py-2 rounded-xl">
       <svg
-        class="w-6 h-6 text-gray-800 dark:text-slate-400 mx-2"
+        className="w-6 h-6 text-gray-800 dark:text-slate-400 mx-2"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -19,8 +19,8 @@ const SearchBar = ({ handleSearch }) => {
       >
         <path
           stroke="currentColor"
-          stroke-linecap="round"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeWidth="2"
           d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
         />
       </svg>

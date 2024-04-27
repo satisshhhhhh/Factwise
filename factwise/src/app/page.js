@@ -1,19 +1,17 @@
 "use client";
 import { useState, useEffect } from "react";
 import userData from "./data/celebrities.json";
-import Image from "next/image";
-import ChangeTheme from "./components/ChangeTheme";
 import UserList from "./components/UserList";
 import SearchBar from "./components/SearchBar";
 
 export default function Home() {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [editedUserId, setEditedUserId] = useState(null);
 
   useEffect(() => {
     setUsers(userData);
   }, []);
-  console.log(users);
 
   const filteredUsers = users.filter((user) =>
     `${user.first} ${user.last}`
@@ -29,16 +27,19 @@ export default function Home() {
     setSearchTerm(term);
   };
 
-  const handleEditUser = (user) => {
-    setEditedUserId(user.id);
+  const handleEditUser = (userId) => {
+    setEditedUserId(userId);
   };
 
   const handleSaveUser = (editedUser) => {
-    setUsers((prevUsers) =>
-      prevUsers.map((user) =>
-        user.id === editedUser.id ? { ...user, ...editedUser } : user
-      )
-    );
+    // Find the index of the edited user in userData
+    const index = users.findIndex((user) => user.id === editedUser.id);
+    if (index !== -1) {
+      // Update the userData with the edited user
+      const updatedUsers = [...users];
+      updatedUsers[index] = editedUser;
+      setUsers(updatedUsers);
+    }
     setEditedUserId(null);
   };
 
@@ -63,6 +64,7 @@ export default function Home() {
           onAccordionToggle={handleAccordionToggle}
           onDeleteUser={handleDeleteUser}
           onEditUser={handleEditUser}
+          onSaveUser={handleSaveUser}
         />
 
         {/* {userData.map( (user) => (
