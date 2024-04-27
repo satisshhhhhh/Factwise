@@ -2,7 +2,13 @@
 
 import UserListItem from "./UserListItem";
 
-const UserList = ({ users, onAccordionToggle, onDeleteUser, onEditUser }) => {
+const UserList = ({
+  users,
+  onAccordionToggle,
+  onDeleteUser,
+  onEditUser,
+  onSaveUser,
+}) => {
   return (
     <div className="user-list pt-5">
       {users.length === 0 ? (
@@ -15,6 +21,7 @@ const UserList = ({ users, onAccordionToggle, onDeleteUser, onEditUser }) => {
             onAccordionToggle={onAccordionToggle}
             onDeleteUser={onDeleteUser}
             onEditUser={onEditUser}
+            onSaveUser={onSaveUser}
           />
         ))
       )}
