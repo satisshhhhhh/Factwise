@@ -91,12 +91,13 @@ const UserListItem = ({
   };
 
   const validateUserDetails = (user) => {
+    const countryRegex = /^[a-zA-Z\s]*$/; 
     return (
       user.first.trim() !== "" &&
       user.last.trim() !== "" &&
       user.age !== "" &&
       user.gender.trim() !== "" &&
-      user.country.trim() !== "" &&
+      countryRegex.test(user.country.trim()) && 
       user.description.trim() !== ""
     );
   };
