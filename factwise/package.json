@@ -4,12 +4,13 @@
   "homepage": "https://satisshhhhhh.github.io/Factwise/factwise",
   "private": true,
   "scripts": {
-    "dev": "cd factwise && next dev",
-    "predeploy": "cd factwise && npm run build",
-    "deploy": "cd factwise && gh-pages -d .next -m 'Deploy React app to GitHub Pages'",
-    "build": "cd factwise && next build",
-    "start": "cd factwise && next start",
-    "lint": "cd factwise && next lint"
+    "dev": "next dev",
+    "predeploy": "npm run build && npm run export",
+    "deploy": "gh-pages -d out -m 'Deploy React app to GitHub Pages'",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
