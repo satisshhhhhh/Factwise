@@ -6,9 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "predeploy": "npm run build && npm run export",
-    "deploy": "gh-pages -d out -m 'Deploy React app to GitHub Pages'",
+    "deploy": "gh-pages -d .next -m 'Deploy React app to GitHub Pages'",
     "build": "next build",
-    "export": "next export",
     "start": "next start",
     "lint": "next lint"
   },
