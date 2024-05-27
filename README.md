@@ -1,11 +1,3 @@
-# Factwise
-
-### Update- 
-- The founder asked me to join as an INTERN; 
-- he DID NOT count my INTERNSHIP experience;
-- he did not match the stipend that i was getting in my current internship
-- he asked me to join on half of my current stipend :)
-### Proceed accordingly! All the best!
 
 ## Closed State
 
